@@ -3,6 +3,10 @@ name = "hexlet-code"
 version = "0.1.0"
 description = ""
 authors = ["Aleksey Kosin <akosin@udm.ru>"]
+repository = "https://github.com/kozenalex/python-project-50"
+packages = [
+  { include = "gendiff" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
