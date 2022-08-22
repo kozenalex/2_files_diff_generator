@@ -1,19 +1,6 @@
-import argparse
-from ast import arg
 import json
-DESCRIPTION = 'Compares two configuration files and shows a difference.'
 
 
-parser = argparse.ArgumentParser(description=DESCRIPTION)
-parser.add_argument('first_file', type=str, help='first file')
-parser.add_argument('second_file', type=str, help='second file')
-parser.add_argument(
-    '-f',
-    metavar='FORMAT',
-    type=str,
-    default='plain',
-    help='set format of output'
-)
 def generate_diff(file1, file2):
     with open(file1) as f1:
         with open(file2) as f2:
@@ -33,13 +20,4 @@ def generate_diff(file1, file2):
                 else:
                     res += ' + ' + key + ': ' + str(dict2[key]) + '\n'
     res += '}'
-    print(res)
-
-
-def main():
-    args = parser.parse_args()
-    generate_diff(args.first_file, args.second_file)
-    
-
-if __name__ == '__main__':
-    main()
+    return res
