@@ -40,3 +40,6 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 gendiff
+    - name: test coverage
+      run: |
+        coverage run -m pytest gendiff
