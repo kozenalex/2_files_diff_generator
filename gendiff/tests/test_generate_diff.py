@@ -18,3 +18,7 @@ def test_generate_diff():
         './gendiff/tests/fixtures/test21.json',
         './gendiff/tests/fixtures/test22.json'
     ) == test2_str
+    assert generate_diff(
+        './gendiff/tests/fixtures/test11.yaml',
+        './gendiff/tests/fixtures/test12.yaml'
+    ) == test1_str
