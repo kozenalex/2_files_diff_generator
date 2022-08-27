@@ -40,7 +40,7 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 gendiff
-    - uses: actions/codeclimate-action@v2.2.4
+    - uses: codeclimate-action@v2.2.4
       env:
         CC_TEST_REPORTER_ID: 687660e305ae01fc3d3a34b40aa2f81531cd6dd564cb0b42a959c22a427964f9
       with:
