@@ -8,7 +8,7 @@ def gegenerate_int_diff(name, dict1, dict2):
     for key in dict1.keys():
         if key in dict2.keys():
             if dict1[key] == dict2[key]:
-                children.append(gendiff.tree.make_leave(key, {'=': dict1[key]}))
+                children.append(gendiff.tree.make_leave(key, {' ': dict1[key]}))
             else:
                 if type(dict1[key]) is dict and type(dict2[key]) is dict:
                     children.append(gegenerate_int_diff(key, dict1[key], dict2[key]))

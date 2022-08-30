@@ -39,3 +39,17 @@ def get_children(node):
         return node['children']
     else:
         return None
+
+
+def get_deep(node, find_name):
+    if get_name(node) == find_name:
+        return 1
+    if is_node(node):
+        children = get_children(node)
+        counts = list(map(children, lambda x: get_deep(x, find_name)))
+        return 1 + sum(counts)
+    else:
+        return 0
+
+    
+
