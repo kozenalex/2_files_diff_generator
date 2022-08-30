@@ -1,4 +1,4 @@
-def make_leave(name, meta = {}):
+def make_leave(name, meta={}):
     return {
         'name': name,
         'type': 'leave',
@@ -6,7 +6,7 @@ def make_leave(name, meta = {}):
     }
 
 
-def make_node(name, children = []):
+def make_node(name, children=[]):
     return {
         'name': name,
         'type': 'node',
@@ -39,17 +39,3 @@ def get_children(node):
         return node['children']
     else:
         return None
-
-
-def get_deep(node, find_name):
-    if get_name(node) == find_name:
-        return 1
-    if is_node(node):
-        children = get_children(node)
-        counts = list(map(children, lambda x: get_deep(x, find_name)))
-        return 1 + sum(counts)
-    else:
-        return 0
-
-    
-

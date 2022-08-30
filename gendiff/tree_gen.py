@@ -1,4 +1,3 @@
-from typing import Dict
 import gendiff.tree
 
 
@@ -14,8 +13,8 @@ def gegenerate_int_diff(name, dict1, dict2):
                     children.append(gegenerate_int_diff(key, dict1[key], dict2[key]))
                 else:
                     children.append(gendiff.tree.make_leave(key, {
-                        '+': dict2[key],
-                        '-': dict1[key]
+                        '-': dict1[key],
+                        '+': dict2[key]
                     }))
         else:
             children.append(gendiff.tree.make_leave(key, {'-': dict1[key]}))
