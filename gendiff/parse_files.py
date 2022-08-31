@@ -1,8 +1,8 @@
 import json
 import yaml
 
-from gendiff.internal_diff import gen_intern_diff
-from gendiff.stylish import stylish_str
+from gendiff.tree_gen import generate_int_diff
+from gendiff.formatter import stylish
 
 
 def generate_diff(file1, file2):
@@ -22,5 +22,5 @@ def generate_diff(file1, file2):
             else:
                 print('usupported file format!')
                 return
-            internal_diff = gen_intern_diff(dict1, dict2)
-    return stylish_str(internal_diff)
+            internal_diff = generate_int_diff('root',dict1, dict2)
+    return stylish(internal_diff, 0)
