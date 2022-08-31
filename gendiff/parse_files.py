@@ -1,7 +1,7 @@
 import json
 import yaml
 
-#from gendiff.tree_gen import generate_int_diff
+
 from gendiff.formatter import stylish
 from gendiff.internal_diff import gen_intern_diff
 

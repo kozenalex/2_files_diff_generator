@@ -13,7 +13,7 @@ def gen_intern_diff(dict1, dict2):
             })
         elif key in dict2.keys() and key in dict1.keys() and dict2[key] == dict1[key]:
             res.update({
-                '=' + key: dict1[key]
+                ' ' + key: dict1[key]
             })
         elif key in dict2.keys() and key not in dict1.keys():
             res.update({
