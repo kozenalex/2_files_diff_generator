@@ -14,7 +14,9 @@ def stylish(diff, indent=0):
         if not isinstance(val, dict):
             res += spacer(indent + 1, key[0]) + f'{key[1:]}: {val}\n'
         else:
-            res += spacer(indent + 1, key[0]) + f'{key[1:]}: ' + stylish(val, indent + 1) + '\n'
+            res += spacer(indent + 1, key[0])
+            res += f'{key[1:]}: ' + stylish(val, indent + 1) + '\n'
     res = res + spacer(indent) + '}'
-    res = res.replace('True', 'true').replace('False', 'false').replace('None', 'null')
+    res = res.replace('True', 'true')
+    res = res.replace('False', 'false').replace('None', 'null')
     return res

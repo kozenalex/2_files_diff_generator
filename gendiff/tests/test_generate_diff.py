@@ -30,3 +30,7 @@ def test_generate_diff():
         './gendiff/tests/fixtures/file1.json',
         './gendiff/tests/fixtures/file2.json'
     ) == test3_str
+    assert generate_diff(
+        './gendiff/tests/fixtures/file1.yaml',
+        './gendiff/tests/fixtures/file2.yaml'
+    ) == test3_str
