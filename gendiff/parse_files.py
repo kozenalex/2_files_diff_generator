@@ -2,11 +2,11 @@ import json
 import yaml
 
 
-from gendiff.formatter import stylish
+from gendiff.formatter import format_output
 from gendiff.internal_diff import gen_intern_diff
 
 
-def generate_diff(file1, file2):
+def generate_diff(file1, file2, format='stylish'):
     with open(file1) as f1:
         with open(file2) as f2:
             if file1.endswith('.json'):
@@ -24,4 +24,4 @@ def generate_diff(file1, file2):
                 print('usupported file format!')
                 return
             internal_diff = gen_intern_diff(dict1, dict2)
-    return stylish(internal_diff)
+    return format_output(internal_diff, format)
