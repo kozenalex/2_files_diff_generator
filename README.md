@@ -10,3 +10,5 @@
 [![asciicast](https://asciinema.org/a/Q8q83xgUKOwWIV0mPhjwq2iqp.svg)](https://asciinema.org/a/Q8q83xgUKOwWIV0mPhjwq2iqp)
 ### Tree files example:
 [![asciicast](https://asciinema.org/a/Tp3NO0e5VMKZhvWJumb9tlzRm.svg)](https://asciinema.org/a/Tp3NO0e5VMKZhvWJumb9tlzRm)
+### Plain format output example
+[![asciicast](https://asciinema.org/a/ElGfEgtKMbEZiUMuRIKOXTDVb.svg)](https://asciinema.org/a/ElGfEgtKMbEZiUMuRIKOXTDVb)

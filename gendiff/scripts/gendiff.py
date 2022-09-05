@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description=DESCRIPTION)
 parser.add_argument('first_file', type=str, help='first file')
 parser.add_argument('second_file', type=str, help='second file')
 parser.add_argument(
-    '-f',
+    '--format',
     metavar='FORMAT',
     type=str,
     default='stylish',
@@ -21,7 +21,7 @@ def main():
     diff = generate_diff(
         args.first_file,
         args.second_file,
-        args.f
+        args.format
     )
     print(diff)
 

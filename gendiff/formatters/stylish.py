@@ -20,6 +20,4 @@ def stylish(diff, indent=0):
             res += spacer(indent + 1, key[:2])
             res += f'{key[2:]}: ' + stylish(val, indent + 1) + '\n'
     res = res + spacer(indent) + '}'
-    res = res.replace('True', 'true')
-    res = res.replace('False', 'false').replace('None', 'null')
     return res

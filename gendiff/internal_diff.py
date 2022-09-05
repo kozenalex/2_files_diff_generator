@@ -1,3 +1,6 @@
+from math import inf
+
+
 def is_both_dict(a, b):
     return isinstance(a, dict) and isinstance(b, dict)
 
@@ -11,7 +14,7 @@ def gen_intern_diff(dict1, dict2):
             res.update({
                 '--' + key: dict1[key]
             })
-        elif (key in dict1.keys() and dict1[key] == dict2.get(key, key)):
+        elif (dict1.get(key, inf) == dict2.get(key, inf)):
             res.update({
                 '  ' + key: dict1[key]
             })
