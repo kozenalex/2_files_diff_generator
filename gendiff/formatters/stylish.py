@@ -1,6 +1,8 @@
 TAB_SPACE = '    '
 
 
+# Функция формирует отступ для вывода, согласно
+# глубине вложенности и ключу изменения параметра
 def spacer(indent, mark=''):
     marks = ('--', '++', '  ', '-+', '+-')
     res_str = TAB_SPACE * indent
@@ -11,6 +13,7 @@ def spacer(indent, mark=''):
         return res_str[:pos] + mark[0] + res_str[pos + 1:]
 
 
+# Функция формирует строку вывода диффа в формате stylish
 def stylish(diff, indent=0):
     res = '{\n'
     for key, val in diff.items():

@@ -1,10 +1,12 @@
 from math import inf
 
 
+# Функция проверки,что оа занчения - словари
 def is_both_dict(a, b):
     return isinstance(a, dict) and isinstance(b, dict)
 
 
+# Функция формирует внутренне представление диффа
 def gen_intern_diff(dict1, dict2):
     res = {}
     keys = sorted(set(

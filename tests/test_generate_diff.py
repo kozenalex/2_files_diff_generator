@@ -1,46 +1,48 @@
 from gendiff import generate_diff
+import pytest
+RES_FIXTURES = (
+    './tests/fixtures/test1.txt',
+    './tests/fixtures/test2.txt',
+    './tests/fixtures/test3.txt',
+    './tests/fixtures/test_plain.txt'
+)
+
+input1 = (
+    './tests/fixtures/test11.json',
+    './tests/fixtures/test21.json',
+    './tests/fixtures/test11.yaml',
+    './tests/fixtures/file1.json',
+    './tests/fixtures/file1.yaml'
+)
 
 
-def test_generate_diff():
-    test1_res = open('./tests/fixtures/test1.txt')
-    test2_res = open('./tests/fixtures/test2.txt')
-    test3_res = open('./tests/fixtures/test3.txt')
-    test4_res = open('./tests/fixtures/test_plain.txt')
-    test1_str = ''
-    test2_str = ''
-    test3_str = ''
-    test_plain = ''
-    for line in test1_res:
-        test1_str += line
-    for line in test2_res:
-        test2_str += line
-    for line in test3_res:
-        test3_str += line
-    for line in test4_res:
-        test_plain += line
-    
-    assert generate_diff(
-        './tests/fixtures/test11.json',
-        './tests/fixtures/test12.json'
-    ) == test1_str
-    assert generate_diff(
-        './tests/fixtures/test21.json',
-        './tests/fixtures/test22.json'
-    ) == test2_str
-    assert generate_diff(
-        './tests/fixtures/test11.yaml',
-        './tests/fixtures/test12.yaml'
-    ) == test1_str
-    assert generate_diff(
-        './tests/fixtures/file1.json',
-        './tests/fixtures/file2.json'
-    ) == test3_str
-    assert generate_diff(
-        './tests/fixtures/file1.yaml',
-        './tests/fixtures/file2.yaml'
-    ) == test3_str
-    assert generate_diff(
-        './tests/fixtures/file1.yaml',
-        './tests/fixtures/file2.yaml',
-        'plain'
-    ) == test_plain
+input2 = (
+    './tests/fixtures/test12.json',
+    './tests/fixtures/test22.json',
+    './tests/fixtures/test12.yaml',
+    './tests/fixtures/file2.json',
+    './tests/fixtures/file2.yaml'
+)
+
+
+def res_load(file):
+    with open(file) as test_res:
+        res_str = ''
+        for line in test_res:
+            res_str += line
+    return res_str
+
+
+test_data = [
+    (input1[0], input2[0], 'stylish', res_load(RES_FIXTURES[0])),
+    (input1[1], input2[1], 'stylish', res_load(RES_FIXTURES[1])),
+    (input1[2], input2[2], 'stylish', res_load(RES_FIXTURES[0])),
+    (input1[3], input2[3], 'stylish', res_load(RES_FIXTURES[2])),
+    (input1[4], input2[4], 'stylish', res_load(RES_FIXTURES[2])),
+    (input1[3], input2[3], 'plain', res_load(RES_FIXTURES[3]))
+]
+
+
+@pytest.mark.parametrize("input1, input2, format, expected", test_data)
+def test_generate_diff(input1, input2, format, expected):
+    assert generate_diff(input1, input2, format) == expected

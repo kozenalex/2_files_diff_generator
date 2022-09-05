@@ -8,11 +8,11 @@ parser = argparse.ArgumentParser(description=DESCRIPTION)
 parser.add_argument('first_file', type=str, help='first file')
 parser.add_argument('second_file', type=str, help='second file')
 parser.add_argument(
-    '--format',
-    metavar='FORMAT',
+    '-f', '--format',
     type=str,
     default='stylish',
-    help='set format of output'
+    choices=('stylish', 'plain', 'json'),
+    help='output format (default: "stylish")'
 )
 
 

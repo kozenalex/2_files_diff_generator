@@ -1,7 +1,9 @@
+# Функция проверки на удаленный или добавленный ключ
 def is_updated(key):
     return key[0] == '+' or key[0] == '-'
 
 
+# Функция заменяет значение ключа на строку [complex value]
 def complex_val(val):
     if isinstance(val, dict):
         return '[complex value]'
@@ -11,6 +13,7 @@ def complex_val(val):
         return val
 
 
+# Функция формирует информационную строку о изменении значения ключа
 def gen_info_str(key, val, old_val=''):
     if key[:2] == '++':
         return f'{key[2:]}\' was added with value: {complex_val(val)}'
@@ -21,6 +24,7 @@ def gen_info_str(key, val, old_val=''):
     return 'conctractrin'
 
 
+# Функция формирует строку вывода диффа в формате plain
 def plain(diff, starting='Property \''):
     res = ''
     old_value = ''
