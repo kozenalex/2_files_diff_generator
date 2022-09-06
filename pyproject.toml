@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "Generates and shows difference betwenn 2 files"
 authors = ["Aleksey Kosin <akosin@udm.ru>"]
 repository = "https://github.com/kozenalex/python-project-50"
 packages = [
@@ -10,15 +10,15 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-
+argparse = "^1.4.0"
+PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.4"
-argparse = "^1.4.0"
 pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
 coverage = "^6.4.4"
-PyYAML = "^6.0"
+
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
