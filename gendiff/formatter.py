@@ -1,11 +1,4 @@
-from gendiff.formatters import stylish, plain, json
-
-
-# Функция "очищает" форматированный вывод, приводя к требуемому
-def output_clean(str_):
-    str_ = str_.replace('None', 'null')
-    str_ = str_.replace('True', 'true').replace('False', 'false')
-    return str_.rstrip('\n')
+from gendiff.formatters import stylish, plain, json, finish_format
 
 
 # Функция формирует вывод диффа, используя требуемый
@@ -17,4 +10,4 @@ def format_output(diff, format='stylish'):
         out_str = stylish.stylish(diff)
     elif format == 'plain':
         out_str = plain.plain(diff)
-    return output_clean(out_str)
+    return finish_format.output_strip_lower(out_str)
