@@ -3,7 +3,7 @@ from gendiff.consts import NESTED, DELETD, ADDED, UPDATED_NEW, UPDATED_OLD
 
 # Функция проверки на удаленный или добавленный ключ
 def is_add_or_del(key):
-    return key[:2] in (ADDED, DELETD)
+    return key[:2] in (ADDED, DELETD, UPDATED_NEW)
 
 
 # Функция заменяет значение ключа на строку [complex value]
@@ -24,6 +24,7 @@ def gen_info_str(key, val, old_val=''):
         return f'{key[2:]}\' was removed'
     if key[:2] == UPDATED_NEW:
         return f'{key[2:]}\' was updated. From {old_val} to {complex_val(val)}'
+
 
 # Функция формирует строку вывода диффа в формате plain
 def plain(diff, starting='Property \''):
