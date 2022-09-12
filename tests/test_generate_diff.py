@@ -4,7 +4,8 @@ RES_FIXTURES = (
     './tests/fixtures/test1.txt',
     './tests/fixtures/test2.txt',
     './tests/fixtures/test3.txt',
-    './tests/fixtures/test_plain.txt'
+    './tests/fixtures/test_plain.txt',
+    './tests/fixtures/test4.txt'
 )
 
 input1 = (
@@ -39,7 +40,8 @@ test_data = [
     (input1[2], input2[2], 'stylish', res_load(RES_FIXTURES[0])),
     (input1[3], input2[3], 'stylish', res_load(RES_FIXTURES[2])),
     (input1[4], input2[4], 'stylish', res_load(RES_FIXTURES[2])),
-    (input1[3], input2[3], 'plain', res_load(RES_FIXTURES[3]))
+    (input1[3], input2[3], 'plain', res_load(RES_FIXTURES[3])),
+    (input1[3], input2[3], 'json', res_load(RES_FIXTURES[4]))
 ]
 
 
