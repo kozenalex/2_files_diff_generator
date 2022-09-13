@@ -13,6 +13,7 @@ def spacer(indent, mark=''):
         return res_str[:pos] + mark + res_str[pos + 1:]
 
 
+# Функция форматированного вывода словаря от глубины вложенности
 def print_dict(d, deep=1):
     res = '{\n'
     for k, v in d.items():
@@ -24,6 +25,7 @@ def print_dict(d, deep=1):
     return res
 
 
+# Функция выводит на печать свойство ключа, в зависимости от типа
 def print_prop(prop, deep=1):
     if isinstance(prop, dict):
         return print_dict(prop, deep)
