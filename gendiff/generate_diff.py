@@ -1,5 +1,6 @@
 from gendiff.formatter import format_output
-from gendiff.internal_diff import gen_intern_diff
+# from gendiff.internal_diff import gen_intern_diff
+from gendiff.diff_tree import gen_intern_diff
 from gendiff.load_data import get_data
 
 
