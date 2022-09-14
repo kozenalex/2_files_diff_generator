@@ -1,5 +1,4 @@
-from gendiff.consts import MARKS, TAB_SPACE, ADDED, DELETD
-from gendiff.diff_tree import is_nested, is_updated
+from gendiff.consts import MARKS, NESTED, TAB_SPACE, ADDED, DELETD, UPDATED
 
 
 # Функция формирует отступ для вывода, согласно
@@ -14,11 +13,12 @@ def spacer(indent, mark=''):
 
 
 # Функция форматированного вывода словаря от глубины вложенности
-def print_dict(d, deep=1):
+def render_dict(d, deep=1):
     res = '{\n'
     for k, v in d.items():
         if isinstance(v, dict):
-            res += TAB_SPACE * deep + k + ': ' + print_dict(v, deep + 1) + '\n'
+            res += TAB_SPACE * deep + k + ': '\
+                + render_dict(v, deep + 1) + '\n'
         else:
             res += TAB_SPACE * deep + k + ': ' + str(v) + '\n'
     res += TAB_SPACE * (deep - 1) + '}'
@@ -26,9 +26,9 @@ def print_dict(d, deep=1):
 
 
 # Функция выводит на печать свойство ключа, в зависимости от типа
-def print_prop(prop, deep=1):
+def stringify_prop(prop, deep=1):
     if isinstance(prop, dict):
-        return print_dict(prop, deep)
+        return render_dict(prop, deep)
     return str(prop)
 
 
@@ -36,20 +36,20 @@ def print_prop(prop, deep=1):
 def stylish(diff, indent=0):
     res = '{\n'
     for key, val in diff.items():
-        if is_nested(val):
+        if val['state'] == NESTED:
             res += spacer(indent + 1)
             res += f'{key}: ' + stylish(val['prop'], indent + 1) + '\n'
-        elif is_updated(val):
+        elif val['state'] == UPDATED:
             old_val = val['prop'][0]
             new_val = val['prop'][1]
             res += spacer(indent + 1, DELETD)\
-                + f'{key}: {print_prop(old_val, indent + 2)}\n'
+                + f'{key}: {stringify_prop(old_val, indent + 2)}\n'
             res += spacer(indent + 1, ADDED)\
-                + f'{key}: {print_prop(new_val, indent + 2)}\n'
+                + f'{key}: {stringify_prop(new_val, indent + 2)}\n'
         else:
             new_val = val['prop']
             res += spacer(indent + 1, val['state'])\
-                + f'{key}: {print_prop(new_val, indent + 2)}\n'
+                + f'{key}: {stringify_prop(new_val, indent + 2)}\n'
     res = res + spacer(indent) + '}'
     return res
 

@@ -1,5 +1,4 @@
-from gendiff.consts import DELETD, ADDED, UPDATED, EQUAL
-from gendiff.diff_tree import is_nested
+from gendiff.consts import DELETD, ADDED, NESTED, UPDATED, EQUAL
 
 
 # Функция заменяет значение ключа на строку [complex value]
@@ -30,7 +29,7 @@ def plain(diff, starting='Property \''):
     for key, val in diff.items():
         if val['state'] == EQUAL:
             continue
-        if is_nested(val):
+        if val['state'] == NESTED:
             res += plain(val['prop'], starting + key + '.')
         else:
             res += starting\

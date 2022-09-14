@@ -7,14 +7,6 @@ def is_both_dict(a, b):
     return isinstance(a, dict) and isinstance(b, dict)
 
 
-def is_nested(node):
-    return node['state'] == NESTED
-
-
-def is_updated(node):
-    return node['state'] == UPDATED
-
-
 # Функция формирует внутренне представление диффа
 def gen_intern_diff(dict1, dict2):
     res = {}
