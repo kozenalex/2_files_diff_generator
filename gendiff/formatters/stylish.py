@@ -40,8 +40,7 @@ def stylish(diff, indent=0):
             res += spacer(indent + 1)
             res += f'{key}: ' + stylish(val['prop'], indent + 1) + '\n'
         elif val['state'] == UPDATED:
-            old_val = val['prop'][0]
-            new_val = val['prop'][1]
+            old_val, new_val = val['prop']
             res += spacer(indent + 1, DELETD)\
                 + f'{key}: {stringify_prop(old_val, indent + 2)}\n'
             res += spacer(indent + 1, ADDED)\

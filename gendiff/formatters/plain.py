@@ -1,4 +1,13 @@
-from gendiff.consts import DELETD, ADDED, NESTED, UPDATED, EQUAL
+from gendiff.consts import (
+    ADD_STR,
+    RM_STR,
+    UPDATED,
+    NESTED,
+    EQUAL,
+    ADDED,
+    DELETD,
+    UPD_STR
+)
 
 
 # Функция заменяет значение ключа на строку [complex value]
@@ -14,13 +23,12 @@ def complex_val(val):
 # Функция формирует информационную строку о изменении значения ключа
 def gen_info_str(key, state, val):
     if state == ADDED:
-        return f'{key}\' was added with value: {complex_val(val)}'
+        return f'{key}\' {ADD_STR} {complex_val(val)}'
     if state == DELETD:
-        return f'{key}\' was removed'
+        return f'{key}\' {RM_STR}'
     if state == UPDATED:
-        old = complex_val(val[0])
-        new = complex_val(val[1])
-        return f'{key}\' was updated. From {old} to {new}'
+        old, new = val
+        return f'{key}\' {UPD_STR} {complex_val(old)} to {complex_val(new)}'
 
 
 # Функция формирует строку вывода диффа в формате plain

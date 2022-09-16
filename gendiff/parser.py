@@ -9,17 +9,14 @@ def get_format(source):
 
 
 def read_file(source):
-    loaded_input = ''
-    for line in source:
-        loaded_input += line
-    return loaded_input
+    return source.readlines()
 
 
 def parse(source, format):
     if format == 'json':
-        return loads(source)
+        return loads(''.join(source))
     elif format in ('yaml', 'yml'):
-        return safe_load(source)
+        return safe_load(''.join(source))
     else:
         print('Error file format')
         exit(0)
